@@ -1,0 +1,14 @@
+version: v1beta1
+plugins:
+  - name: go
+    out: people
+    opt: paths=source_relative
+  - name: go-grpc
+    out: people
+    opt: paths=source_relative
+  - name: grpc-gateway
+    out: people
+    opt: paths=source_relative,logtostderr=true,generate_unbound_methods=true
+  - name: openapiv2
+    out: api/swagger-ui
+    opt: json_names_for_fields=false

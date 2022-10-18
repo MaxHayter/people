@@ -1,0 +1,15 @@
+db_config:
+  addr: "127.0.0.1:5432"
+  database: "people"
+  user: "postgres"
+  password: "PASSWORD"
+grpc_clients:
+  password_endpoint_grpc: "localhost:1600"
+server:
+  grpc_address: :1601
+  gateway_address: :80
+  base_path: "/api/people/v1"
+  max_grpc_msg_size: 268435456
+swagger:
+  path: "./../api/swagger-ui"
+  url: "/swagger-ui"

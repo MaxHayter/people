@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package people;
+
+import "protoc-gen-swagger/options/annotations.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/MaxHayter/people";
+
+option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
+  info: { title: "People API" version: "1.0" }
+  base_path: "/api/people/v1"
+  external_docs: { description: "Terms of service" }
+};
+
+service PeopleService {
+  rpc Registrate(Request) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      get: "/registrate"
+    };
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
+      description: "registration"
+      summary: "Summary: registration"
+      tags: "People"
+    };
+  };
+  rpc Login(Request) returns (Result) {
+    option (google.api.http) = {
+      get: "/login"
+    };
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
+      description: "login"
+      summary: "Summary: login"
+      tags: "People"
+    };
+  };
+}
+
+message Request {
+  string login = 1;
+  string password = 2;
+}
+
+message Result {
+  bool result = 1;
+}
